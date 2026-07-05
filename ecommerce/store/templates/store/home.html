@@ -1,0 +1,124 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CodeAlpha E-Commerce</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#">CodeAlpha</a>
+            <nav class="navigation">
+                <a href="#features">Features</a>
+                <a href="#products">Products</a>
+                <a href="#newsletter">Newsletter</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Launch your store fast</p>
+                    <h1>Modern, responsive e-commerce for every device.</h1>
+                    <p class="hero-text">
+                        Explore a sleek shopping experience built for speed, simplicity, and conversion.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#products">Shop Now</a>
+                        <a class="btn btn-secondary" href="#features">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-inner">
+                        <p class="hero-card-label">Featured collection</p>
+                        <h2>Top picks for your first launch</h2>
+                        <p>Designed to look great on mobile phones, tablets, and desktops.</p>
+                        <div class="stats">
+                            <div>
+                                <strong>24/7</strong>
+                                <span>support</span>
+                            </div>
+                            <div>
+                                <strong>3x</strong>
+                                <span>faster load</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="features">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">What we offer</p>
+                    <h2>Built to make your shop feel premium.</h2>
+                </div>
+                <div class="feature-grid">
+                    {% for item in benefits %}
+                    <article class="feature-card">
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.text }}</p>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="products">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Featured Products</p>
+                    <h2>Products designed for a seamless shopping experience.</h2>
+                </div>
+                <div class="product-grid">
+                    {% if featured_products %}
+                        {% for product in featured_products %}
+                        <article class="product-card">
+                            <div class="product-badge">New</div>
+                            <h3>{{ product.name }}</h3>
+                            <p>{{ product.description }}</p>
+                            <div class="product-footer">
+                                <strong>{{ product.price_display }}</strong>
+                                <a class="product-btn" href="#">Buy Now</a>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    {% else %}
+                        <p class="empty-state">No products are available right now. Please check back soon.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="newsletter">
+            <div class="container newsletter-section">
+                <div>
+                    <p class="eyebrow">Stay updated</p>
+                    <h2>Be the first to know about new arrivals.</h2>
+                </div>
+                <form class="newsletter-form" action="#" method="get">
+                    <input type="email" placeholder="Enter your email" aria-label="Email address" required />
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2026 CodeAlpha. Crafted for a fast e-commerce launch.</p>
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
